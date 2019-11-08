@@ -564,7 +564,7 @@ open class LineChartRenderer: LineRadarRenderer
         {
             guard let dataSet = lineData.getDataSetByIndex(i) as? ILineChartDataSet else { continue }
             
-            if !dataSet.isVisible || dataSet.entryCount == 0
+            if !dataSet.isVisible || !dataSet.isDrawCirclesEnabled || dataSet.entryCount == 0
             {
                 continue
             }
@@ -623,11 +623,6 @@ open class LineChartRenderer: LineRadarRenderer
                     }
 
                     accessibilityOrderedElements[i].append(element)
-                }
-
-                if !dataSet.isDrawCirclesEnabled
-                {
-                    continue
                 }
 
                 context.setFillColor(dataSet.getCircleColor(atIndex: j)!.cgColor)
